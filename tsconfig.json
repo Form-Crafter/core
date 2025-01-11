@@ -1,39 +1,33 @@
 {
+  "extends": "@form-crafter/dev-configs/dist",
   "compilerOptions": {
-    "target": "ES2020",
-    "useDefineForClassFields": true,
-    "module": "ESNext",
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "skipLibCheck": true,
-
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "isolatedModules": true,
-    "moduleDetection": "force",
-    "noEmit": false,
-    "declaration": true,
-    "esModuleInterop": true,
     "outDir": "./dist",
-
-    /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true,
-    
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "paths": {
-      "_types": ["src/types"],
-      "_types/*": ["src/types/*"],
+      "_consts": [
+        "consts"
+      ],
+      "_consts/*": [
+        "consts/*"
+      ],
+      "_hooks": [
+        "hooks"
+      ],
+      "_hooks/*": [
+        "hooks/*"
+      ],
+      "_types": [
+        "types"
+      ],
+      "_types/*": [
+        "types/*"
+      ],
+      "_utils": [
+        "utils"
+      ],
+      "_utils/*": [
+        "utils/*"
+      ]
     }
-  },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx"
-  ],
-  "exclude": [
-      "node_modules",
-      "dist"
-  ]
+  }
 }
