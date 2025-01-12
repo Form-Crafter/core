@@ -4,17 +4,41 @@
     "outDir": "./dist",
     "baseUrl": "./src",
     "paths": {
+      "_components": [
+        "components"
+      ],
+      "_components/*": [
+        "components/*"
+      ],
       "_consts": [
         "consts"
       ],
       "_consts/*": [
         "consts/*"
       ],
+      "_enums": [
+        "enums"
+      ],
+      "_enums/*": [
+        "enums/*"
+      ],
+      "_hocs": [
+        "hocs"
+      ],
+      "_hocs/*": [
+        "hocs/*"
+      ],
       "_hooks": [
         "hooks"
       ],
       "_hooks/*": [
         "hooks/*"
+      ],
+      "_services": [
+        "services"
+      ],
+      "_services/*": [
+        "services/*"
       ],
       "_types": [
         "types"
@@ -27,6 +51,24 @@
       ],
       "_utils/*": [
         "utils/*"
+      ],
+      "_validators": [
+        "validators"
+      ],
+      "_validators/*": [
+        "validators/*"
+      ],
+      "_relations": [
+        "relations"
+      ],
+      "_relations/*": [
+        "relations/*"
+      ],
+      "_pages": [
+        "pages"
+      ],
+      "_pages/*": [
+        "pages/*"
       ]
     }
   }

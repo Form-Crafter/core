@@ -2,6 +2,8 @@ import { resolve } from 'path'
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
 
+import aliases from './aliases.json'
+
 const getAlias = (path: string) => resolve(__dirname, path)
 
 export default defineConfig({
@@ -15,12 +17,13 @@ export default defineConfig({
         target: ['esnext'],
     },
     resolve: {
-        alias: {
-            _consts: getAlias('src/consts'),
-            _hooks: getAlias('src/hooks'),
-            _types: getAlias('src/types'),
-            _utils: getAlias('src/utils'),
-        },
+        alias: Object.entries(aliases).reduce(
+            (res, [key, value]) => ({
+                ...res,
+                [key]: getAlias(`src/${value}`),
+            }),
+            {},
+        ),
     },
     plugins: [dts()],
 })
