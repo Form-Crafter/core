@@ -14,9 +14,9 @@ export type PartialIfUndefined<T extends object> = {
     [K in keyof T as K extends RequiredKeys<T> ? K : never]: T[K]
 }
 
-export type OptionsBuilderSchema = { __outputType: any }
+export type OptionsBuilderSchema = Record<string, { __outputType: any }>
 
-export type GetComponentPropertiesSchema<T extends Record<string, OptionsBuilderSchema>> = PartialIfUndefined<{
+export type GetComponentPropertiesSchema<T extends OptionsBuilderSchema> = PartialIfUndefined<{
     [K in keyof T]: T[K]['__outputType']
 }>
 
