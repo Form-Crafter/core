@@ -52,11 +52,11 @@
       "_utils/*": [
         "utils/*"
       ],
-      "_validators": [
-        "validators"
+      "_validation-rules": [
+        "validation-rules"
       ],
-      "_validators/*": [
-        "validators/*"
+      "_validation-rules/*": [
+        "validation-rules/*"
       ],
       "_relations": [
         "relations"

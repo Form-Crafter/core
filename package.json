@@ -22,7 +22,7 @@
     "fix": "npm run lint:eslint -- --fix && npm run lint:tsc"
   },
   "devDependencies": {
-    "@form-crafter/dev-configs": "^0.2.6",
+    "@form-crafter/dev-configs": "^0.2.7",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "vite": "^6.0.5",
@@ -33,5 +33,8 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
-  "prettier": "@form-crafter/dev-configs/dist/prettier.json"
+  "prettier": "@form-crafter/dev-configs/dist/prettier.json",
+  "dependencies": {
+    "@form-crafter/utils": "^0.0.10"
+  }
 }
