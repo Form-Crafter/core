@@ -1,3 +1,4 @@
+import { Unwrap } from '@form-crafter/utils'
 import { FC, ReactNode } from 'react'
 
 import { ComponentMeta } from './componentSchema'
@@ -24,11 +25,13 @@ export type DynamicContainerComponentProps<N extends string, T extends Component
     onRemoveGroup: (props: { groupId: ComponentId }) => void
 }
 
-export type GetBaseComponent<N extends string, T extends ComponentType, O extends OptionsBuilder<any>> = FC<BaseComponentProps<N, T, O>>
+export type GetBaseComponent<N extends string, T extends ComponentType, O extends OptionsBuilder<any>> = FC<Unwrap<BaseComponentProps<N, T, O>>>
 
-export type GetContainerComponent<N extends string, T extends ComponentType, O extends OptionsBuilder<any>> = FC<ContainerComponentProps<N, T, O>>
+export type GetContainerComponent<N extends string, T extends ComponentType, O extends OptionsBuilder<any>> = FC<Unwrap<ContainerComponentProps<N, T, O>>>
 
-export type GetDynamicContainerComponent<N extends string, T extends ComponentType, O extends OptionsBuilder<any>> = FC<DynamicContainerComponentProps<N, T, O>>
+export type GetDynamicContainerComponent<N extends string, T extends ComponentType, O extends OptionsBuilder<any>> = FC<
+    Unwrap<DynamicContainerComponentProps<N, T, O>>
+>
 
 export type GetComponent<N extends string, T extends ComponentType, O extends OptionsBuilder<any>> = T extends 'base'
     ? GetBaseComponent<N, T, O>
