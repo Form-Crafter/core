@@ -1,6 +1,6 @@
-import { ComponentId, ComponentSchema, ComponentType } from './general'
-import { OptionsBuilder, OptionsBuilderOutput } from './optionsBuilder'
-import { ValidationRuleSchema } from './validationSchema'
+import { ComponentId, ComponentType } from './general'
+import { OptionsBuilder, OptionsBuilderOutput } from './options-builder'
+import { ValidationRuleSchema } from './validation-schema'
 import { ViewSchemaId, ViewTemplateComponentSchema } from './views'
 
 export type GeneralComponent = {
@@ -37,3 +37,5 @@ export type TemplateComponentSchema<Schema extends { meta: { id: ComponentId } }
         templateId: ComponentId
     }
 }
+
+export type ComponentSchema = any

@@ -2,6 +2,8 @@ import { FactoryOpts } from 'imask'
 
 import { maxColSpan } from '_consts'
 
+import { ComponentSchema } from './component-schema'
+
 export type ResponsiveSizes<T> = {
     default: T
     xxl?: T
@@ -22,26 +24,8 @@ export type SelectionOption = {
     value: string
 }
 
-export type ComponentSchema = any
-
 export type ComponentId = string
 
 export type ComponentSchemaValue = Extract<ComponentSchema, { properties: { value: unknown } }>['properties']['value']
-
-// export type ComponentName =
-//     | 'input'
-//     | 'mask-input'
-//     | 'date'
-//     | 'time'
-//     | 'email'
-//     | 'textarea'
-//     | 'select'
-//     | 'checkbox'
-//     | 'radio'
-//     | 'text'
-//     | 'button'
-//     | 'group'
-//     | 'multifield'
-//     | 'table'
 
 export type ComponentType = 'base' | 'container' | 'dynamic-container'

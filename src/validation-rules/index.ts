@@ -1,7 +1,3 @@
-export * from './isRequired'
-export * from './maxLength'
-export * from './minLength'
-
-// declare module '../types/core/validations/schema.ts' {
-//     type ValidationRuleSchemaAdditional = MaxLengthRuleSchema | MinLengthRuleSchema
-// }
+export * from './is-required'
+export * from './max-length'
+export * from './min-length'

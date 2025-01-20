@@ -1,6 +1,6 @@
 import { IsRequiredRuleSchema } from '_validation-rules'
 
-import { ComponentId, ComponentSchemaValue } from './general'
+import { ComponentId } from './general'
 import { ComponentsPropertiesData, ComponentsTree } from './tree'
 
 // TODO
@@ -17,13 +17,13 @@ declare global {
 
 export type ValidationRuleSchema = IsRequiredRuleSchema | ValidationRuleSchemaAdditional
 
-export type ValidationRule<T extends { ruleName: string; options: object } = any, V = ComponentSchemaValue> =
+export type ValidationRule<T extends { ruleName: string; options: object } = any> =
     | {
           ruleName: T['ruleName']
           kind: 'component'
           ruleDisplayName: string
           validate: (
-              value: V,
+              value: any,
               params: {
                   componentId: ComponentId
                   options: T['options']

@@ -1,10 +1,10 @@
 import { Unwrap } from '@form-crafter/utils'
 import { FC, ReactNode } from 'react'
 
-import { ComponentMeta } from './componentSchema'
+import { ComponentMeta } from './component-schema'
 import { ComponentId } from './general'
 import { ComponentType } from './general'
-import { OptionsBuilder, OptionsBuilderOutput } from './optionsBuilder'
+import { OptionsBuilder, OptionsBuilderOutput } from './options-builder'
 import { ComponentsTree, TreeNodeParentId } from './tree'
 
 type BaseComponentProps<N extends string, T extends ComponentType, O extends OptionsBuilder<any>> = {

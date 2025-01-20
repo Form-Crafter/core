@@ -1,4 +1,5 @@
-import { ComponentId, ComponentSchema } from './general'
+import { ComponentSchema } from './component-schema'
+import { ComponentId } from './general'
 
 export type ComponentsTree = {
     id: ComponentId
