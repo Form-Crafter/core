@@ -8,25 +8,25 @@ export type GeneralComponent = {
     relations?: any[]
 }
 
-export type ComponentMeta<T extends ComponentType, N extends string> = {
+export type ComponentMeta<T extends ComponentType> = {
     id: ComponentId
-    name: N
     type: T
+    name: string
     formKey?: string
 }
 
-export type BaseComponentSchema<N extends string, O extends OptionsBuilder<any>> = GeneralComponent & {
-    meta: ComponentMeta<'base', N>
+export type BaseComponentSchema<O extends OptionsBuilder<any>> = GeneralComponent & {
+    meta: ComponentMeta<'base'>
     properties: OptionsBuilderOutput<O>
 }
 
-export type ContainerComponentSchema<N extends string, O extends OptionsBuilder<any>> = GeneralComponent & {
-    meta: ComponentMeta<'container', N>
+export type ContainerComponentSchema<O extends OptionsBuilder<any>> = GeneralComponent & {
+    meta: ComponentMeta<'container'>
     properties: OptionsBuilderOutput<O>
 }
 
-export type DynamicContainerComponentSchema<N extends string, O extends OptionsBuilder<any>> = GeneralComponent & {
-    meta: ComponentMeta<'dynamic-container', N>
+export type DynamicContainerComponentSchema<O extends OptionsBuilder<any>> = GeneralComponent & {
+    meta: ComponentMeta<'dynamic-container'>
     templateViews: Record<ViewSchemaId, ViewTemplateComponentSchema>
     templateComponents: Record<ComponentId, TemplateComponentSchema<ComponentSchema>>
     properties: OptionsBuilderOutput<O>

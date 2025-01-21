@@ -1,6 +1,6 @@
 export * from './component-schema'
+export * from './form-crafter-component'
 export * from './general'
-export * from './get-component'
 export * from './options-builder'
 export * from './tree'
 export * from './validation-schema'
