@@ -1,7 +1,7 @@
 import { IsRequiredRuleSchema } from '_validation-rules'
 
+import { ComponentsPropertiesData } from './component-schema'
 import { ComponentId } from './general'
-import { ComponentsPropertiesData, ComponentsTree } from './tree'
 
 // TODO
 // 1. можно ли реализовать всю ту валидацию из файла velidation-target?
@@ -28,7 +28,7 @@ export type ValidationRule<T extends { ruleName: string; options: object } = any
                   componentId: ComponentId
                   options: T['options']
                   fieldsProperties: ComponentsPropertiesData
-                  fieldsTree: ComponentsTree
+                  fieldsTree: any
               },
           ) => string | null
       }
@@ -36,5 +36,5 @@ export type ValidationRule<T extends { ruleName: string; options: object } = any
           ruleName: string
           kind: 'form'
           ruleDisplayName: string
-          validate: (params: { options: T; fieldsProperties: ComponentsPropertiesData; fieldsTree: ComponentsTree }) => string | null
+          validate: (params: { options: T; fieldsProperties: ComponentsPropertiesData; fieldsTree: any }) => string | null
       }

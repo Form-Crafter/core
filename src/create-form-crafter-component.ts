@@ -5,7 +5,7 @@ type Params<T extends ComponentType, O extends OptionsBuilder<any>> = {
     label: string
     type: T
     optionsBuilder: O
-    component: FormCrafterComponent<T, O>
+    Component: FormCrafterComponent<T, O>
 }
 
 export const createFormCrafterComponent = <T extends ComponentType, O extends OptionsBuilder<any>>(params: Params<T, O>) => {

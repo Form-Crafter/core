@@ -39,3 +39,11 @@ export type TemplateComponentSchema<Schema extends { meta: { id: ComponentId } }
 }
 
 export type ComponentSchema = any
+
+export type ComponentsPropertiesData = Record<ComponentId, Partial<ComponentSchema['properties']>>
+
+export type ComponentsMetaData = Record<ComponentId, ComponentSchema['meta']>
+
+export type ComponentsValidationData = Record<ComponentId, NonNullable<ComponentSchema['validation']>>
+
+export type ComponentsRelationsData = Record<ComponentId, Required<ComponentSchema['relations']>>
