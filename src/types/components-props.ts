@@ -4,7 +4,7 @@ import { FC, ReactNode } from 'react'
 import { ComponentMeta } from './components-schema'
 import { ComponentId } from './general'
 import { ComponentType } from './general'
-import { GridComponent } from './generator'
+import { GridComponent, ResolverComponent } from './generator'
 import { OptionsBuilder, OptionsBuilderOutput } from './options-builder'
 import { ViewSchema } from './views'
 
@@ -18,6 +18,7 @@ export type BaseComponentProps<O extends Record<string, any>> = GenaralComponent
 
 export type ContainerComponentProps<O extends Record<string, any>> = GenaralComponentProps<'container', O> & {
     GridComponent: GridComponent
+    ResolverComponent: ResolverComponent
     children?: ViewSchema
     renderTitle?: (props: O) => ReactNode
 }
