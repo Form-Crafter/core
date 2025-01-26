@@ -1,5 +1,5 @@
-export * from './component-props'
-export * from './component-schema'
+export * from './components-props'
+export * from './components-schema'
 export * from './general'
 export * from './options-builder'
 export * from './validation-schema'

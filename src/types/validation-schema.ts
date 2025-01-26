@@ -1,6 +1,6 @@
 import { IsRequiredRuleSchema } from '_validation-rules'
 
-import { ComponentsPropertiesData } from './component-schema'
+import { ComponentsPropertiesData } from './components-schema'
 import { ComponentId } from './general'
 
 // TODO
