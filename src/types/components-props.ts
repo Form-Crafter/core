@@ -25,7 +25,7 @@ export type ContainerComponentProps<O extends Record<string, any>> = GenaralComp
 
 export type DynamicContainerComponentProps<O extends Record<string, any>> = GenaralComponentProps<'dynamic-container', O> & {
     GridComponent: GridComponent
-    GroupComponent: GridComponent
+    ResolverComponent: ResolverComponent
     children?: ViewSchema
     onAddGroup: () => void
     onRemoveGroup: (props: { groupId: ComponentId }) => void
