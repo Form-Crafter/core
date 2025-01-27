@@ -1,3 +1,4 @@
+export * from './component-module'
 export * from './components-props'
 export * from './components-schema'
 export * from './general'
