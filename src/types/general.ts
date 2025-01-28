@@ -2,8 +2,6 @@ import { FactoryOpts } from 'imask'
 
 import { maxColSpan } from '_consts'
 
-import { ComponentSchema } from './components-schema'
-
 export type ResponsiveSizes<T> = {
     default: T
     xxl?: T
@@ -23,7 +21,5 @@ export type SelectionOption = {
 }
 
 export type ComponentId = string
-
-export type ComponentSchemaValue = Extract<ComponentSchema, { properties: { value: unknown } }>['properties']['value']
 
 export type ComponentType = 'base' | 'container' | 'dynamic-container'

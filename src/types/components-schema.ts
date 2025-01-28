@@ -1,5 +1,6 @@
+import { SomeObject } from '@form-crafter/utils'
+
 import { ComponentId, ComponentType } from './general'
-import { OptionsBuilder, OptionsBuilderOutput } from './options-builder'
 import { ValidationRuleSchema } from './validation-schema'
 import { ViewSchemaId, ViewTemplateComponentSchema } from './views'
 
@@ -15,21 +16,21 @@ export type ComponentMeta<T extends ComponentType> = {
     formKey?: string
 }
 
-export type BaseComponentSchema<O extends OptionsBuilder<any>> = GeneralComponent & {
+export type BaseComponentSchema<O extends SomeObject = SomeObject> = GeneralComponent & {
     meta: ComponentMeta<'base'>
-    properties: OptionsBuilderOutput<O>
+    properties: O
 }
 
-export type ContainerComponentSchema<O extends OptionsBuilder<any>> = GeneralComponent & {
+export type ContainerComponentSchema<O extends SomeObject = SomeObject> = GeneralComponent & {
     meta: ComponentMeta<'container'>
-    properties: OptionsBuilderOutput<O>
+    properties: O
 }
 
-export type DynamicContainerComponentSchema<O extends OptionsBuilder<any>> = GeneralComponent & {
+export type DynamicContainerComponentSchema<O extends SomeObject = SomeObject> = GeneralComponent & {
     meta: ComponentMeta<'dynamic-container'>
     templateViews: Record<ViewSchemaId, ViewTemplateComponentSchema>
-    templateComponents: Record<ComponentId, TemplateComponentSchema<ComponentSchema>>
-    properties: OptionsBuilderOutput<O>
+    templateComponents: Record<ComponentId, TemplateComponentSchema<BaseComponentSchema | ContainerComponentSchema | DynamicContainerComponentSchema>>
+    properties: O
 }
 
 export type TemplateComponentSchema<Schema extends { meta: { id: ComponentId } }> = Omit<Schema, 'meta'> & {
@@ -38,7 +39,7 @@ export type TemplateComponentSchema<Schema extends { meta: { id: ComponentId } }
     }
 }
 
-export type ComponentSchema = any
+export type ComponentSchema = BaseComponentSchema | ContainerComponentSchema | DynamicContainerComponentSchema
 
 export type ComponentsPropertiesData = Record<ComponentId, Partial<ComponentSchema['properties']>>
 
@@ -47,3 +48,5 @@ export type ComponentsMetaData = Record<ComponentId, ComponentSchema['meta']>
 export type ComponentsValidationData = Record<ComponentId, NonNullable<ComponentSchema['validation']>>
 
 export type ComponentsRelationsData = Record<ComponentId, Required<ComponentSchema['relations']>>
+
+export type ComponentSchemaValue = Extract<ComponentSchema, { properties: { value: unknown } }>['properties']['value']
