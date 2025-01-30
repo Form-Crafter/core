@@ -4,10 +4,11 @@
     "_enums": "enums",
     "_hocs": "hocs",
     "_hooks": "hooks",
+    "_contexts": "contexts",
     "_services": "services",
     "_types": "types",
     "_utils": "utils",
-    "_validation-rules": "validation-rules",
-    "_relations": "relations",
+    "_validations-rules": "validations-rules",
+    "_relations-rules": "relations-rules",
     "_pages": "pages"
 }

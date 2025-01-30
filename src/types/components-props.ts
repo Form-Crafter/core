@@ -6,7 +6,7 @@ import { ComponentId } from './general'
 import { ComponentType } from './general'
 import { GridComponent, ResolverComponent } from './generator'
 import { OptionsBuilder, OptionsBuilderOutput } from './options-builder'
-import { ViewSchema } from './views'
+import { ViewTree } from './views'
 
 export type GenaralComponentProps<T extends ComponentType, O extends Record<string, any>> = {
     meta: ComponentMeta<T>
@@ -19,14 +19,14 @@ export type BaseComponentProps<O extends Record<string, any>> = GenaralComponent
 export type ContainerComponentProps<O extends Record<string, any>> = GenaralComponentProps<'container', O> & {
     GridComponent: GridComponent
     ResolverComponent: ResolverComponent
-    children?: ViewSchema
+    children?: ViewTree
     renderTitle?: (props: O) => ReactNode
 }
 
 export type DynamicContainerComponentProps<O extends Record<string, any>> = GenaralComponentProps<'dynamic-container', O> & {
     GridComponent: GridComponent
     ResolverComponent: ResolverComponent
-    children?: ViewSchema
+    children?: ViewTree
     onAddGroup: () => void
     onRemoveGroup: (props: { groupId: ComponentId }) => void
 }

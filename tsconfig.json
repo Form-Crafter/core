@@ -34,6 +34,12 @@
       "_hooks/*": [
         "hooks/*"
       ],
+      "_contexts": [
+        "contexts"
+      ],
+      "_contexts/*": [
+        "contexts/*"
+      ],
       "_services": [
         "services"
       ],
@@ -52,17 +58,17 @@
       "_utils/*": [
         "utils/*"
       ],
-      "_validation-rules": [
-        "validation-rules"
+      "_validations-rules": [
+        "validations-rules"
       ],
-      "_validation-rules/*": [
-        "validation-rules/*"
+      "_validations-rules/*": [
+        "validations-rules/*"
       ],
-      "_relations": [
-        "relations"
+      "_relations-rules": [
+        "relations-rules"
       ],
-      "_relations/*": [
-        "relations/*"
+      "_relations-rules/*": [
+        "relations-rules/*"
       ],
       "_pages": [
         "pages"

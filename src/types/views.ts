@@ -1,24 +1,28 @@
 import { ComponentId } from './general'
 import { ColSpan, ResponsiveSizes } from './general'
 
-export type ViewSchemaId = string
+export type ViewTreeId = string
 
-export type ViewComponentSchema = {
+export type ViewNode = {
     componentId: ComponentId
     layout: {
         col: ResponsiveSizes<ColSpan>
     }
-    children?: ViewSchema
+    children?: ViewTree
 }
 
-export type ViewSchema = ViewComponentSchema[]
+export type ViewNodeWithChildren = Omit<ViewNode, 'children'> & {
+    children: Required<ViewNode>['children']
+}
 
-export type ViewTemplateComponentSchema = Omit<ViewComponentSchema, 'componentId' | 'children'> & {
+export type ViewTree = ViewNode[]
+
+export type ViewNodeTemplate = Omit<ViewNode, 'componentId' | 'children'> & {
     templateComponentId: ComponentId
-    children?: ViewTemplateComponentSchema[]
+    children?: ViewNodeTemplate[]
 }
 
-export type ViewsSchemas = {
-    initialViewId: ViewSchemaId
-    schemas: Record<ViewSchemaId, ViewSchema>
+export type ViewsTrees = {
+    initialViewId: ViewTreeId
+    trees: Record<ViewTreeId, ViewTree>
 }

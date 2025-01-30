@@ -1,4 +1,5 @@
 export * from './contexts'
 export * from './create-component-module'
+export * from './hooks'
 export * from './types'
 export { maxColSpan } from '_consts'
