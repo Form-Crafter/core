@@ -1,10 +1,9 @@
 import { createContext, FC, PropsWithChildren, useContext, useMemo } from 'react'
 
-import { ComponentModule, Schema } from '_types'
+import { ComponentModule } from '_types'
 
 type FormCrafterContext = {
-    theme: ComponentModule[]
-    schema: Schema
+    theme: ComponentModule<any>[]
     PlaceholderComponent: FC
 }
 
@@ -12,8 +11,8 @@ const formCrafterContext = createContext<FormCrafterContext | null>(null)
 
 const { Provider } = formCrafterContext
 
-export const FormCrafterProvider: FC<PropsWithChildren<FormCrafterContext>> = ({ theme, schema, PlaceholderComponent, children }) => {
-    const value = useMemo(() => ({ theme, schema, PlaceholderComponent }), [theme, schema, PlaceholderComponent])
+export const FormCrafterProvider: FC<PropsWithChildren<FormCrafterContext>> = ({ theme, PlaceholderComponent, children }) => {
+    const value = useMemo(() => ({ theme, PlaceholderComponent }), [theme, PlaceholderComponent])
     return <Provider value={value}>{children}</Provider>
 }
 

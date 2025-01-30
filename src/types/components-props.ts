@@ -43,4 +43,8 @@ export type FormCrafterComponentProps<T extends ComponentType, O extends Options
       ? Unwrap<ContainerComponentProps<OptionsBuilderOutput<O>>>
       : Unwrap<DynamicContainerComponentProps<OptionsBuilderOutput<O>>>
 
-export type FormCrafterComponent<T extends ComponentType, O extends OptionsBuilder<any>> = FC<FormCrafterComponentProps<T, O>>
+export type FormCrafterComponent<T extends ComponentType, O extends OptionsBuilder<any>> = T extends 'base'
+    ? FC<FormCrafterComponentProps<'base', O>>
+    : T extends 'container'
+      ? FC<FormCrafterComponentProps<'container', O>>
+      : FC<FormCrafterComponentProps<'dynamic-container', O>>
