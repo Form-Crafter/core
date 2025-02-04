@@ -28,8 +28,10 @@ export type ContainerComponentSchema<O extends SomeObject = SomeObject> = Genera
 
 export type DynamicContainerComponentSchema<O extends SomeObject = SomeObject> = GeneralComponent & {
     meta: ComponentMeta<'dynamic-container'>
-    templateViews: Record<ViewTreeId, ViewNodeTemplate>
-    templateComponents: Record<ComponentId, TemplateComponentSchema<BaseComponentSchema | ContainerComponentSchema | DynamicContainerComponentSchema>>
+    template: {
+        viewsTrees: Record<ViewTreeId, ViewNodeTemplate>
+        componentsSchemas: Record<ComponentId, TemplateComponentSchema<BaseComponentSchema | ContainerComponentSchema | DynamicContainerComponentSchema>>
+    }
     properties: O
 }
 

@@ -27,8 +27,8 @@ export type DynamicContainerComponentProps<O extends Record<string, any>> = Gena
     GridComponent: GridComponent
     ResolverComponent: ResolverComponent
     children?: ViewTree
-    onAddGroup: () => void
-    onRemoveGroup: (props: { groupId: ComponentId }) => void
+    onAddChild: () => void
+    onRemoveChild: (props: { childComponentId: ComponentId }) => void
 }
 
 export type BaseComponent<O extends OptionsBuilder<any>> = FC<Unwrap<GenaralComponentProps<'base', OptionsBuilderOutput<O>>>>
