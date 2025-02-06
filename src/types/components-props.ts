@@ -1,34 +1,33 @@
-import { Unwrap } from '@form-crafter/utils'
+import { SomeObject, Unwrap } from '@form-crafter/utils'
 import { FC, ReactNode } from 'react'
 
 import { ComponentMeta } from './components-schema'
-import { ComponentId } from './general'
 import { ComponentType } from './general'
 import { GridComponent, ResolverComponent } from './generator'
 import { OptionsBuilder, OptionsBuilderOutput } from './options-builder'
 import { ViewTree } from './views'
 
-export type GenaralComponentProps<T extends ComponentType, O extends Record<string, any>> = {
+export type GenaralComponentProps<T extends ComponentType, O extends SomeObject> = {
     meta: ComponentMeta<T>
     properties: O
     onChangeProperties: (changes: Partial<O>) => void
 }
 
-export type BaseComponentProps<O extends Record<string, any>> = GenaralComponentProps<'base', O>
+export type BaseComponentProps<O extends SomeObject> = GenaralComponentProps<'base', O>
 
-export type ContainerComponentProps<O extends Record<string, any>> = GenaralComponentProps<'container', O> & {
+export type ContainerComponentProps<O extends SomeObject> = GenaralComponentProps<'container', O> & {
     GridComponent: GridComponent
     ResolverComponent: ResolverComponent
     children?: ViewTree
     renderTitle?: (props: O) => ReactNode
 }
 
-export type DynamicContainerComponentProps<O extends Record<string, any>> = GenaralComponentProps<'dynamic-container', O> & {
+export type DynamicContainerComponentProps<O extends SomeObject> = GenaralComponentProps<'dynamic-container', O> & {
     GridComponent: GridComponent
     ResolverComponent: ResolverComponent
     children?: ViewTree
     onAddChild: () => void
-    onRemoveChild: (props: { childComponentId: ComponentId }) => void
+    onRemoveChild: (props: { index: number }) => void
 }
 
 export type BaseComponent<O extends OptionsBuilder<any>> = FC<Unwrap<GenaralComponentProps<'base', OptionsBuilderOutput<O>>>>

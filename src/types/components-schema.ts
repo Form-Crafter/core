@@ -11,6 +11,7 @@ export type GeneralComponent = {
 
 export type ComponentMeta<T extends ComponentType> = {
     id: ComponentId
+    templateId?: ComponentId
     type: T
     name: string
     formKey?: string
@@ -30,18 +31,23 @@ export type DynamicContainerComponentSchema<O extends SomeObject = SomeObject> =
     meta: ComponentMeta<'dynamic-container'>
     template: {
         viewsTrees: Record<ViewTreeId, ViewNodeTemplate>
-        componentsSchemas: Record<ComponentId, TemplateComponentSchema<BaseComponentSchema | ContainerComponentSchema | DynamicContainerComponentSchema>>
+        componentsSchemas: Record<
+            ComponentId,
+            | TemplateComponentSchema<BaseComponentSchema>
+            | TemplateComponentSchema<ContainerComponentSchema>
+            | TemplateComponentSchema<DynamicContainerComponentSchema>
+        >
     }
     properties: O
 }
 
-export type TemplateComponentSchema<Schema extends { meta: { id: ComponentId } }> = Omit<Schema, 'meta'> & {
-    meta: Omit<Pick<Schema, 'meta'>, 'id'> & {
+export type ComponentSchema = BaseComponentSchema | ContainerComponentSchema | DynamicContainerComponentSchema
+
+export type TemplateComponentSchema<Schema extends ComponentSchema> = Omit<Schema, 'meta'> & {
+    meta: Omit<Schema['meta'], 'id' | 'templateId'> & {
         templateId: ComponentId
     }
 }
-
-export type ComponentSchema = BaseComponentSchema | ContainerComponentSchema | DynamicContainerComponentSchema
 
 export type ComponentsPropertiesData = Record<ComponentId, Partial<ComponentSchema['properties']>>
 
