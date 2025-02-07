@@ -2,7 +2,7 @@ import { SomeObject } from '@form-crafter/utils'
 
 import { ComponentId, ComponentType } from './general'
 import { ValidationRuleSchema } from './validation-schema'
-import { ViewNodeTemplate, ViewTreeId } from './views'
+import { ViewId, ViewTreeTemplate } from './views'
 
 export type GeneralComponent = {
     validation?: ValidationRuleSchema[]
@@ -30,7 +30,7 @@ export type ContainerComponentSchema<O extends SomeObject = SomeObject> = Genera
 export type DynamicContainerComponentSchema<O extends SomeObject = SomeObject> = GeneralComponent & {
     meta: ComponentMeta<'dynamic-container'>
     template: {
-        viewsTrees: Record<ViewTreeId, ViewNodeTemplate>
+        views: Record<ViewId, ViewTreeTemplate>
         componentsSchemas: Record<
             ComponentId,
             | TemplateComponentSchema<BaseComponentSchema>

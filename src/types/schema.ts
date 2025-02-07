@@ -1,6 +1,6 @@
 import { ComponentSchema } from './components-schema'
 import { ComponentId, ResponsiveSizes } from './general'
-import { ViewsTrees } from './views'
+import { Views } from './views'
 
 export type SchemaLayout = {
     rowsSpanPx?: ResponsiveSizes<number>
@@ -11,7 +11,7 @@ export type Schema = {
     id: string
     version: string
     layout?: SchemaLayout
-    viewsTrees: ViewsTrees
+    views: Views
     componentsSchemas: Record<ComponentId, ComponentSchema>
     validationRules: any[]
     relationsRules: any[]

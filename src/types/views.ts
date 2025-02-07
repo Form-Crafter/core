@@ -1,28 +1,35 @@
 import { ComponentId } from './general'
 import { ColSpan, ResponsiveSizes } from './general'
 
-export type ViewTreeId = string
+export type ViewId = string
+
+export type ViewNodeLayout = {
+    col: ResponsiveSizes<ColSpan>
+}
+
+export type ViewNodeChild = { id: ComponentId }
 
 export type ViewNode = {
-    componentId: ComponentId
-    layout: {
-        col: ResponsiveSizes<ColSpan>
-    }
-    children?: ViewTree
+    id: ComponentId
+    parentId?: ComponentId
+    layout?: ViewNodeLayout
+    children?: ViewNodeChild[]
 }
+
+export type ViewTree = Record<ComponentId, ViewNode>
+
+export type ViewNodeTemplate = Omit<ViewNode, 'id' | 'children'> & {
+    templateId: ComponentId
+    children?: ViewNodeChild[]
+}
+
+export type ViewTreeTemplate = Record<ComponentId, ViewNodeTemplate>
 
 export type ViewNodeWithChildren = Omit<ViewNode, 'children'> & {
     children: Required<ViewNode>['children']
 }
 
-export type ViewTree = ViewNode[]
-
-export type ViewNodeTemplate = Omit<ViewNode, 'componentId' | 'children'> & {
-    templateComponentId: ComponentId
-    children?: ViewNodeTemplate[]
-}
-
-export type ViewsTrees = {
-    initialViewId: ViewTreeId
-    trees: Record<ViewTreeId, ViewTree>
+export type Views = {
+    initialViewId: ViewId
+    trees: Record<ViewId, ViewTree>
 }
