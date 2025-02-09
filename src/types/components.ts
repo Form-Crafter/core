@@ -1,4 +1,4 @@
-import { Nullable, SerializableObject, SerializableValue, Unwrap } from '@form-crafter/utils'
+import { Nullable, OptionalSerializableValue, SerializableObject, Unwrap } from '@form-crafter/utils'
 import { FC, ReactNode } from 'react'
 
 import { ComponentMeta } from './components-schema'
@@ -18,7 +18,7 @@ export type GenaralComponentProps<T extends ComponentType, P extends Serializabl
     onChangeProperties: (changes: Partial<P>) => void
 }
 
-export type BaseComponentProperties = SerializableObject & { value: SerializableValue }
+export type BaseComponentProperties = SerializableObject & { value: OptionalSerializableValue }
 
 export type ContainerComponentProperties = SerializableObject & { title?: Nullable<string> }
 

@@ -1,6 +1,6 @@
-import { SerializableValue } from '@form-crafter/utils'
+import { OptionalSerializableValue } from '@form-crafter/utils'
 
-export interface OptionsBuilder<Output extends SerializableValue = SerializableValue> {
+export interface OptionsBuilder<Output extends OptionalSerializableValue = OptionalSerializableValue> {
     __outputType: Output
 }
 
