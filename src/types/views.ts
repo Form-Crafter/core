@@ -1,5 +1,4 @@
-import { ComponentId } from './general'
-import { ColSpan, ResponsiveSizes } from './general'
+import { ColSpan, ComponentId, ResponsiveSizes } from './general'
 
 export type ViewId = string
 
@@ -11,16 +10,19 @@ export type ViewNodeChild = { id: ComponentId }
 
 export type ViewNode = {
     id: ComponentId
-    parentId?: ComponentId
+    parentId: ComponentId | null
     layout?: ViewNodeLayout
     children?: ViewNodeChild[]
 }
 
 export type ViewTree = Record<ComponentId, ViewNode>
 
-export type ViewNodeTemplate = Omit<ViewNode, 'id' | 'children'> & {
-    templateId: ComponentId
-    children?: ViewNodeChild[]
+export type ViewNodeTemplateChild = { templateId: ComponentId }
+
+export type ViewNodeTemplate = Omit<ViewNode, 'id' | 'parentId' | 'children'> & {
+    templateId: ViewNode['id']
+    templateParentId: ViewNode['parentId']
+    children?: ViewNodeTemplateChild[]
 }
 
 export type ViewTreeTemplate = Record<ComponentId, ViewNodeTemplate>

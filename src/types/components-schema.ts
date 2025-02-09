@@ -1,4 +1,4 @@
-import { SomeObject } from '@form-crafter/utils'
+import { SerializableObject } from '@form-crafter/utils'
 
 import { ComponentId, ComponentType } from './general'
 import { ValidationRuleSchema } from './validation-schema'
@@ -17,17 +17,17 @@ export type ComponentMeta<T extends ComponentType> = {
     formKey?: string
 }
 
-export type BaseComponentSchema<O extends SomeObject = SomeObject> = GeneralComponent & {
+export type BaseComponentSchema<T extends SerializableObject = SerializableObject> = GeneralComponent & {
     meta: ComponentMeta<'base'>
-    properties: O
+    properties: T
 }
 
-export type ContainerComponentSchema<O extends SomeObject = SomeObject> = GeneralComponent & {
+export type ContainerComponentSchema<T extends SerializableObject = SerializableObject> = GeneralComponent & {
     meta: ComponentMeta<'container'>
-    properties: O
+    properties: T
 }
 
-export type DynamicContainerComponentSchema<O extends SomeObject = SomeObject> = GeneralComponent & {
+export type DynamicContainerComponentSchema<T extends SerializableObject = SerializableObject> = GeneralComponent & {
     meta: ComponentMeta<'dynamic-container'>
     template: {
         views: Record<ViewId, ViewTreeTemplate>
@@ -38,7 +38,7 @@ export type DynamicContainerComponentSchema<O extends SomeObject = SomeObject> =
             | TemplateComponentSchema<DynamicContainerComponentSchema>
         >
     }
-    properties: O
+    properties: T
 }
 
 export type ComponentSchema = BaseComponentSchema | ContainerComponentSchema | DynamicContainerComponentSchema
