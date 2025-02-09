@@ -37,6 +37,6 @@
   },
   "prettier": "@form-crafter/dev-configs/dist/prettier.json",
   "dependencies": {
-    "@form-crafter/utils": "^0.0.20"
+    "@form-crafter/utils": "^0.0.21"
   }
 }

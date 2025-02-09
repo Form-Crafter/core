@@ -1,4 +1,4 @@
-import { Nullable, OptionalSerializableValue, SerializableObject, Unwrap } from '@form-crafter/utils'
+import { Nullable, OptionalSerializableObject, OptionalSerializableValue, Unwrap } from '@form-crafter/utils'
 import { FC, ReactNode } from 'react'
 
 import { ComponentMeta } from './components-schema'
@@ -12,21 +12,21 @@ export type GridComponentProps = {
 
 export type GridComponent = FC<GridComponentProps>
 
-export type GenaralComponentProps<T extends ComponentType, P extends SerializableObject> = {
+export type GenaralComponentProps<T extends ComponentType, P extends OptionalSerializableObject> = {
     meta: ComponentMeta<T>
     properties: P
     onChangeProperties: (changes: Partial<P>) => void
 }
 
-export type BaseComponentProperties = SerializableObject & { value: OptionalSerializableValue }
+export type BaseComponentProperties = OptionalSerializableObject & { value: OptionalSerializableValue }
 
-export type ContainerComponentProperties = SerializableObject & { title?: Nullable<string> }
+export type ContainerComponentProperties = OptionalSerializableObject & { title?: Nullable<string> }
 
 export type ComponentProperties<T extends ComponentType> = T extends 'base'
     ? BaseComponentProperties
     : T extends 'container'
       ? ContainerComponentProperties
-      : SerializableObject
+      : OptionalSerializableObject
 
 export type BaseComponentProps<P extends BaseComponentProperties = BaseComponentProperties> = GenaralComponentProps<'base', P>
 
@@ -36,7 +36,10 @@ export type ContainerComponentProps<P extends ContainerComponentProperties = Con
     childNodes?: ViewNodeChild[]
 }
 
-export type DynamicContainerComponentProps<P extends SerializableObject = SerializableObject> = GenaralComponentProps<'dynamic-container', P> & {
+export type DynamicContainerComponentProps<P extends OptionalSerializableObject = OptionalSerializableObject> = GenaralComponentProps<
+    'dynamic-container',
+    P
+> & {
     GridComponent: GridComponent
     ResolverContainer: ResolverContainer
     childNodes?: ViewNodeChild[]
