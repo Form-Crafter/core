@@ -1,16 +1,16 @@
 import { Nullable, OptionalSerializableObject, OptionalSerializableValue, Unwrap } from '@form-crafter/utils'
 import { FC, ReactNode } from 'react'
 
-import { ComponentMeta } from './components-schema'
-import { ComponentType } from './general'
-import { ViewNodeChild } from './views'
+import { ComponentMeta } from './components-schemas'
+import { ComponentType, EntityId } from './general'
+import { ViewComponent, ViewComponentChild, ViewRowChild } from './views'
 
-export type GridComponentProps = {
-    childNodes: ViewNodeChild[]
-    renderChild?: (childNode: ViewNodeChild, index: number) => ReactNode
+export type RowsListProps = {
+    rows: ViewRowChild[]
+    renderChild?: any
 }
 
-export type GridComponent = FC<GridComponentProps>
+export type RowsList = FC<RowsListProps>
 
 export type GenaralComponentProps<T extends ComponentType, P extends OptionalSerializableObject> = {
     meta: ComponentMeta<T>
@@ -31,20 +31,20 @@ export type ComponentProperties<T extends ComponentType> = T extends 'base'
 export type BaseComponentProps<P extends BaseComponentProperties = BaseComponentProperties> = GenaralComponentProps<'base', P>
 
 export type ContainerComponentProps<P extends ContainerComponentProperties = ContainerComponentProperties> = GenaralComponentProps<'container', P> & {
-    GridComponent: GridComponent
+    RowsList: RowsList
     renderTitle?: (params: Pick<GenaralComponentProps<'container', P>, 'meta' | 'properties'>) => ReactNode
-    childNodes?: ViewNodeChild[]
+    rows?: ViewComponent['rows']
 }
 
 export type DynamicContainerComponentProps<P extends OptionalSerializableObject = OptionalSerializableObject> = GenaralComponentProps<
     'dynamic-container',
     P
 > & {
-    GridComponent: GridComponent
+    RowsList: RowsList
     ResolverContainer: ResolverContainer
-    childNodes?: ViewNodeChild[]
+    rows?: ViewComponent['rows']
     onAddChild: () => void
-    onRemoveChild: (props: { index: number }) => void
+    onRemoveChild: (props: { rowId: EntityId }) => void
 }
 
 export type FormCrafterComponentProps<T extends ComponentType, S extends ComponentProperties<T>> = T extends 'base'
@@ -77,8 +77,8 @@ export type FormCrafterComponent<T extends ComponentType, S extends ComponentPro
         ? DynamicContainerComponent<S>
         : never
 
-export type ResolverBase = FC<ViewNodeChild>
+export type ResolverBase = FC<ViewComponentChild & { rowId: EntityId }>
 
-export type ResolverContainer = FC<ViewNodeChild & Pick<ContainerComponentProps, 'renderTitle'>>
+export type ResolverContainer = FC<ViewComponentChild & { rowId: EntityId } & Pick<ContainerComponentProps, 'renderTitle'>>
 
-export type ResolverDynamicContainer = FC<ViewNodeChild>
+export type ResolverDynamicContainer = FC<ViewComponentChild & { rowId: EntityId }>

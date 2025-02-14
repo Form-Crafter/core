@@ -1,5 +1,6 @@
-import { ComponentSchema } from './components-schema'
-import { ComponentId, ResponsiveSizes } from './general'
+import { ComponentsSchemas } from './components-schemas'
+import { ResponsiveSizes } from './general'
+import { RowsSchemas } from './rows-schemas'
 import { Views } from './views'
 
 export type SchemaLayout = {
@@ -12,7 +13,8 @@ export type Schema = {
     version: string
     layout?: SchemaLayout
     views: Views
-    componentsSchemas: Record<ComponentId, ComponentSchema>
+    rowsSchemas: RowsSchemas
+    componentsSchemas: ComponentsSchemas
     validationRules: any[]
     relationsRules: any[]
 }

@@ -1,1 +1,1 @@
-export const rootViewNodeId = '__rootViewNodeId__'
+export const rootComponentId = '__rootComponentId__'

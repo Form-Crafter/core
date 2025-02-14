@@ -1,37 +1,41 @@
-import { ColSpan, ComponentId, ResponsiveSizes } from './general'
+import { ColSpan, EntityId, ResponsiveSizes } from './general'
 
-export type ViewId = string
+export type ViewComponentChild = { id: EntityId }
+export type ViewRowChild = { id: EntityId }
 
-export type ViewNodeLayout = {
+export type ViewComponentLayout = {
     col: ResponsiveSizes<ColSpan>
 }
 
-export type ViewNodeChild = { id: ComponentId }
-
-export type ViewNode = {
-    id: ComponentId
-    parentId: ComponentId | null
-    layout?: ViewNodeLayout
-    children?: ViewNodeChild[]
+export type ViewComponentParams = {
+    layout?: ViewComponentLayout
 }
 
-export type ViewTree = Record<ComponentId, ViewNode>
-
-export type ViewNodeTemplateChild = { templateId: ComponentId }
-
-export type ViewNodeTemplate = Omit<ViewNode, 'id' | 'parentId' | 'children'> & {
-    templateId: ViewNode['id']
-    templateParentId: ViewNode['parentId']
-    children?: ViewNodeTemplateChild[]
+export type ViewComponent = {
+    id: EntityId
+    parentId?: EntityId
+    params?: ViewComponentParams
+    rows?: ViewRowChild[]
 }
 
-export type ViewTreeTemplate = Record<ComponentId, ViewNodeTemplate>
-
-export type ViewNodeWithChildren = Omit<ViewNode, 'children'> & {
-    children: Required<ViewNode>['children']
+export type ViewRow = {
+    id: EntityId
+    children: ViewComponentChild[]
 }
 
+export type ViewDefinitionRows = Record<EntityId, ViewRow>
+export type ViewDefinitionComponents = Record<EntityId, ViewComponent>
+export type ViewDefinition = {
+    rows: ViewDefinitionRows
+    components: ViewDefinitionComponents
+}
+
+export type ViewComponentWithRows = Omit<ViewComponent, 'rows'> & {
+    rows: Required<ViewComponent>['rows']
+}
+
+export type ViewsDefinitions = Record<EntityId, ViewDefinition>
 export type Views = {
-    initialViewId: ViewId
-    trees: Record<ViewId, ViewTree>
+    initialViewId: EntityId
+    definitions: ViewsDefinitions
 }

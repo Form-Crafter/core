@@ -20,6 +20,6 @@ export type SelectionOption = {
     value: string
 }
 
-export type ComponentId = string
+export type EntityId = string
 
 export type ComponentType = 'base' | 'container' | 'dynamic-container'
