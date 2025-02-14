@@ -16,6 +16,7 @@ export type GenaralComponentProps<T extends ComponentType, P extends OptionalSer
     meta: ComponentMeta<T>
     properties: P
     onChangeProperties: (changes: Partial<P>) => void
+    rowId: EntityId
 }
 
 export type BaseComponentProperties = OptionalSerializableObject & { value: OptionalSerializableValue }
