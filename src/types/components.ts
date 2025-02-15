@@ -16,7 +16,6 @@ export type GenaralComponentProps<T extends ComponentType, P extends OptionalSer
     meta: ComponentMeta<T>
     properties: P
     onChangeProperties: (changes: Partial<P>) => void
-    rowId: EntityId
 }
 
 export type BaseComponentProperties = OptionalSerializableObject & { value: OptionalSerializableValue }
@@ -78,8 +77,8 @@ export type FormCrafterComponent<T extends ComponentType, S extends ComponentPro
         ? DynamicContainerComponent<S>
         : never
 
-export type ResolverBase = FC<ViewComponentChild & { rowId: EntityId }>
+export type ResolverBase = FC<ViewComponentChild>
 
-export type ResolverContainer = FC<ViewComponentChild & { rowId: EntityId } & Pick<ContainerComponentProps, 'renderTitle'>>
+export type ResolverContainer = FC<ViewComponentChild & Pick<ContainerComponentProps, 'renderTitle'>>
 
-export type ResolverDynamicContainer = FC<ViewComponentChild & { rowId: EntityId }>
+export type ResolverDynamicContainer = FC<ViewComponentChild>
