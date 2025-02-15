@@ -15,6 +15,7 @@ export type GenaralComponentProps<T extends ComponentType, P extends OptionalSer
     meta: ComponentMeta<T>
     properties: P
     onChangeProperties: (changes: Partial<P>) => void
+    id: EntityId
     parentId: EntityId
     rowId: EntityId
 }
