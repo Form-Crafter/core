@@ -11,12 +11,28 @@ export type ViewComponentParams = {
     layout?: ViewComponentLayout
 }
 
-export type ViewComponent = {
+export type ViewComponentWithRows = {
+    id: EntityId
+    parentId?: EntityId
+    params?: ViewComponentParams
+    rows: ViewRowChild[]
+}
+
+export type ViewComponentWithParent = {
+    id: EntityId
+    parentId: EntityId
+    params?: ViewComponentParams
+    rows?: ViewRowChild[]
+}
+
+export type ViewComponentDefault = {
     id: EntityId
     parentId?: EntityId
     params?: ViewComponentParams
     rows?: ViewRowChild[]
 }
+
+export type ViewComponent = ViewComponentDefault | ViewComponentWithParent | ViewComponentWithRows
 
 export type ViewRow = {
     id: EntityId
@@ -28,10 +44,6 @@ export type ViewDefinitionComponents = Record<EntityId, ViewComponent>
 export type ViewDefinition = {
     rows: ViewDefinitionRows
     components: ViewDefinitionComponents
-}
-
-export type ViewComponentWithRows = Omit<ViewComponent, 'rows'> & {
-    rows: Required<ViewComponent>['rows']
 }
 
 export type ViewsDefinitions = Record<EntityId, ViewDefinition>
