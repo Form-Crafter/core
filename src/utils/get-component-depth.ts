@@ -2,6 +2,8 @@ import { isEmpty } from '@form-crafter/utils'
 
 import { EntityId, ViewDefinitionComponents } from '_types'
 
+const deepLevelLeft = 2
+
 export const getComponentDepth = (id: EntityId, componentsMap: ViewDefinitionComponents): number => {
     console.log('id: ', id)
     console.log('componentsMap: ', componentsMap)
@@ -20,5 +22,5 @@ export const getComponentDepth = (id: EntityId, componentsMap: ViewDefinitionCom
         return execute(parentId, depth + 1)
     }
 
-    return execute(id, 0)
+    return execute(id, 0) - deepLevelLeft
 }
