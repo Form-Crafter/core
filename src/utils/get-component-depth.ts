@@ -5,8 +5,7 @@ import { EntityId, ViewDefinitionComponents } from '_types'
 const deepLevelLeft = 2
 
 export const getComponentDepth = (id: EntityId, componentsMap: ViewDefinitionComponents): number => {
-    console.log('id: ', id)
-    console.log('componentsMap: ', componentsMap)
+    console.log('FUCK!!!!!!!!!!!!!!!!!!!!!!!!!!')
 
     const execute = (currentId: EntityId, depth: number): number => {
         console.log('currentId: ', currentId)
