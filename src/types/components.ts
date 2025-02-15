@@ -5,9 +5,14 @@ import { ComponentMeta } from './components-schemas'
 import { ComponentType, EntityId } from './general'
 import { ViewComponent, ViewComponentChild, ViewRowChild } from './views'
 
+export type HeaderContainerProps = {
+    rows: ViewRowChild[]
+}
+
+export type HeaderContainer = FC<HeaderContainerProps>
+
 export type RowsListProps = {
     rows: ViewRowChild[]
-    renderChild?: any
 }
 
 export type RowsList = FC<RowsListProps>
@@ -43,8 +48,8 @@ export type DynamicContainerComponentProps<P extends OptionalSerializableObject 
     RowsList: RowsList
     ResolverContainer: ResolverContainer
     rows?: ViewComponent['rows']
-    onAddChild: () => void
-    onRemoveChild: (props: { rowId: EntityId }) => void
+    onAddRow: () => void
+    onRemoveRow: (props: { rowId: EntityId }) => void
 }
 
 export type FormCrafterComponentProps<T extends ComponentType, S extends ComponentProperties<T>> = T extends 'base'

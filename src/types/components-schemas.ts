@@ -1,7 +1,6 @@
 import { OptionalSerializableObject } from '@form-crafter/utils'
 
 import { ComponentType, EntityId } from './general'
-import { RowsSchemas } from './rows-schemas'
 import { ValidationRuleSchema } from './validation-schema'
 import { ViewsDefinitions } from './views'
 
@@ -49,7 +48,6 @@ export type DynamicContainerComponentSchema<T extends OptionalSerializableObject
     meta: ComponentMeta<'dynamic-container'>
     template: {
         views: ViewsDefinitions
-        rowsSchemas: RowsSchemas
         componentsSchemas: Record<EntityId, BaseComponentSchema | ContainerComponentSchema | DynamicContainerComponentSchema>
     }
     properties: T
